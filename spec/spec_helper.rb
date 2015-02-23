@@ -18,6 +18,12 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+
+  # ELIMINA UNOS WARNING DE DEPRECATED RSpec::Core::ExampleGroup#example
+    # No siempre se debe incluir esto en futuras apps ya que las nuevas verisones de Rspec funcionan diferentes
+  config.expose_current_running_example_as :example
+  # FIN
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

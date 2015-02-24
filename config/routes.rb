@@ -1,5 +1,10 @@
 Odot::Application.routes.draw do
-  resources :todo_lists
+
+# Anida todo_items dentro de listas
+  # Crea el route todo_list_todo_items_path
+  resources :todo_lists do
+    resources :todo_items
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

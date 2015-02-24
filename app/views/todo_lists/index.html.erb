@@ -6,8 +6,6 @@
       <th>Title</th>
       <th>Description</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -18,9 +16,14 @@
       <tr id="<%= dom_id(todo_list) %>">
         <td><%= todo_list.title %></td>
         <td><%= todo_list.description %></td>
-        <td><%= link_to 'Show', todo_list %></td>
-        <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
-        <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <!-- Este link lo generamos nosotros a partir de la config de routes -->
+            <!-- ...path(todo_list) pasamos el todo list en el cual se está iterando para que sepa cual es su id al generar el link-->
+          <%= link_to 'List Items', todo_list_todo_items_path(todo_list) %>
+          <%= link_to 'Show', todo_list %>
+          <%= link_to 'Edit', edit_todo_list_path(todo_list) %>
+          <%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

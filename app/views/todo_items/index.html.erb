@@ -6,3 +6,7 @@
         <li><%= todo_item.content %></li>
     <% end %>
 </ul>
+
+<!-- Este link debe dirigir al controladoor todo_item a la función de new -->
+    <!-- el 2ndo argumento se saca de bin/rake routes y se le adiciona _path -->
+<p><%= link_to "New Todo Item", new_todo_list_todo_item_path%></p>

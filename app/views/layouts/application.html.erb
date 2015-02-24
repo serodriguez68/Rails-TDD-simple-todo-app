@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+        <!-- Dice que flash apareced en un div con las clases "aret flash y el tipo ingresado" -->
+            <!-- flash es un feature of rails -->
+        <% flash.each do |type, message| %>
+            <div class="alert flash <%= type %>">
+                <%= message %>
+            </div>
+        <% end %>
+
 
 <%= yield %>
 

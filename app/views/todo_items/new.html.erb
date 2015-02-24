@@ -1,0 +1,10 @@
+<!-- Es necesario pasar la lista y el item ya que en routes, los items están dentro de la lista -->
+    <!-- Esto previene el error en test: undefined method `todo_items_path' -->
+<%= form_for [@todo_list, @todo_item] do |form| %>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+
+    <%= form.submit "Save" %>
+
+<% end %>
+

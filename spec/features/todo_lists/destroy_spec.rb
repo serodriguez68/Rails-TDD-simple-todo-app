@@ -18,6 +18,8 @@ describe "Editing todo lists" do
         end
 
         expect(page).to_not have_content(todo_list.title)
+
+        # Cuenta que no haya ningún elemento en la base de datos
         expect(TodoList.count).to eq(0)
 
     end

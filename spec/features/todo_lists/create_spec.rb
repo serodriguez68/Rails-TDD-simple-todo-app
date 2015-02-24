@@ -31,11 +31,14 @@ describe "Creating todo lists" do
     end
 
     it "displays an error when the todo list has no tilte" do
+
+        # Cuenta que no haya ningún elemento en la base de datos
         expect(TodoList.count).to eq(0)
 
         create_todo_list({title: "", description: "This is what I'm doing today"})
 
         expect(page).to have_content("error")
+
         expect(TodoList.count).to eq(0)
 
         visit "/todo_lists"

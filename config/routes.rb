@@ -3,8 +3,15 @@ Odot::Application.routes.draw do
 # Anida todo_items dentro de listas
   # Crea el route todo_list_todo_items_path
   resources :todo_lists do
-    resources :todo_items
+    resources :todo_items do
+      #Anida la ruta de complete (considerado un update) dentro de cada todo item
+      member do
+        patch :complete #patch = update ?
+      end
+    end
   end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

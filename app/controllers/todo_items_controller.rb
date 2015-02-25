@@ -54,6 +54,13 @@ class TodoItemsController < ApplicationController
 
   end
 
+  def complete
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    @todo_item.update_attribute(:completed_at, Time.now)
+    redirect_to todo_list_todo_items_path, notice: "Todo item marked as complete."
+
+  end
+
   # Evita que tengamos que pasar el todo_list siempre que vamos a pasar el todo_item.
     # El todo_list ya lo tenemos en la url
   def url_options

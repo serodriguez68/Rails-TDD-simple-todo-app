@@ -1,19 +1,19 @@
 class TodoItemsController < ApplicationController
 #Todas las variables de instancia del controlador están disponibles en el view respectivo
 
+  # Ejecuta esto al inicio de cada acción (método) en el controlador
+  before_action :find_todo_list
+
   def index
     # permite encontrar el todo list al que el item pertenece a través del route
         # @todo_lilst estará disponible en el view
-    @todo_list = TodoList.find(params[:todo_list_id])
   end
 
   def new
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.new
   end
 
   def create
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.new(todo_item_params) #relacionado con strong parameters
     if @todo_item.save
         flash[:success] = "Added todo list item."
@@ -26,12 +26,10 @@ class TodoItemsController < ApplicationController
   end
 
   def edit
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.find(params[:id])
   end
 
   def update
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.find(params[:id])
 
     if @todo_item.update_attributes(todo_item_params)
@@ -44,6 +42,18 @@ class TodoItemsController < ApplicationController
 
   end
 
+  def destroy
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    if @todo_item.destroy
+        flash[:success] = "Todo list item was deleted."
+    else
+        flash[:error] = "Todo list item could not be deleted."
+
+    end
+    redirect_to todo_list_todo_items_path
+
+  end
+
   # Evita que tengamos que pasar el todo_list siempre que vamos a pasar el todo_item.
     # El todo_list ya lo tenemos en la url
   def url_options
@@ -53,6 +63,11 @@ class TodoItemsController < ApplicationController
   # Le dice a Rails que está bien trabajar con el parámetro content
     # Strong parameters (documentation)
   private
+
+  def find_todo_list
+    @todo_list = TodoList.find(params[:todo_list_id])
+  end
+
   def todo_item_params
     params[:todo_item].permit(:content)
   end

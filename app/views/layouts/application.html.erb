@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+    <div class="nav">
+      <h1><%= link_to "Odot", root_path %></h1>
+      <ul>
+        <li><%= link_to "Todo Lists", todo_lists_path %></li>
+      </ul>
+
+      <br class="clear"/>
+
+    </div>
         <!-- Dice que flash apareced en un div con las clases "aret flash y el tipo ingresado" -->
             <!-- flash es un feature of rails -->
         <% flash.each do |type, message| %>

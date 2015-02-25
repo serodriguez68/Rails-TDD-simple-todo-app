@@ -21,8 +21,10 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
 
-  #Le dice a RSPEC que incluya nuestro helper como include de todo los spec de features
+  #Le dice a RSPEC que incluya nuestros helpers como include de todo los spec de features
   config.include TodoListHelpers, type: :feature
+  config.include RailsDomIdHelper, type: :feature
+
 
   # ELIMINA UNOS WARNING DE DEPRECATED RSpec::Core::ExampleGroup#example
     # No siempre se debe incluir esto en futuras apps ya que las nuevas verisones de Rspec funcionan diferentes

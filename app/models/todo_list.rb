@@ -12,4 +12,13 @@ class TodoList < ActiveRecord::Base
     validates :description, length: { minimum: 5 }
 
 
+    def has_completed_items?
+        # llama al scope de todo item
+        todo_items.complete.size > 0
+    end
+
+    def has_incomplete_items?
+        # llama al scope de todo item
+        todo_items.incomplete.size > 0
+    end
 end

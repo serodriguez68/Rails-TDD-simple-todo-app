@@ -19,4 +19,4 @@ Download the repo, set up a Rails development environment in your machine (MacOS
 ## Credits
 
 This app was developed as a personal project for learning Rails development with Treehouse's Rails development track.
-
+Sergio Rodríguez, Bogotá, Colombia
